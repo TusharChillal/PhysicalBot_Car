@@ -1,0 +1,13 @@
+package.xml
+setup.cfg
+setup.py
+motor_driver/__init__.py
+motor_driver/manual_motor_driver.py
+motor_driver.egg-info/PKG-INFO
+motor_driver.egg-info/SOURCES.txt
+motor_driver.egg-info/dependency_links.txt
+motor_driver.egg-info/entry_points.txt
+motor_driver.egg-info/requires.txt
+motor_driver.egg-info/top_level.txt
+motor_driver.egg-info/zip-safe
+resource/motor_driver

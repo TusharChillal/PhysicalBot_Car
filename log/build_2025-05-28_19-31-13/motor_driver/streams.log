@@ -1,0 +1,19 @@
+[0.486s] Invoking command in '/home/tusharchillal/PhysicalBot_ws/build/motor_driver': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/tusharchillal/PhysicalBot_ws/build/motor_driver/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tusharchillal/PhysicalBot_ws/install/motor_driver/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/tusharchillal/PhysicalBot_ws/build/motor_driver/build --no-deps symlink_data
+[0.676s] running develop
+[0.767s] /usr/lib/python3/dist-packages/setuptools/command/easy_install.py:363: UserWarning: Unbuilt egg for pytest-repeat [unknown version] (/usr/lib/python3/dist-packages)
+[0.767s]   self.local_index = Environment(self.shadow_path + sys.path)
+[0.784s] running egg_info
+[0.794s] writing motor_driver.egg-info/PKG-INFO
+[0.794s] writing dependency_links to motor_driver.egg-info/dependency_links.txt
+[0.794s] writing entry points to motor_driver.egg-info/entry_points.txt
+[0.794s] writing requirements to motor_driver.egg-info/requires.txt
+[0.794s] writing top-level names to motor_driver.egg-info/top_level.txt
+[0.820s] reading manifest file 'motor_driver.egg-info/SOURCES.txt'
+[0.821s] writing manifest file 'motor_driver.egg-info/SOURCES.txt'
+[0.831s] running build_ext
+[0.832s] Creating /home/tusharchillal/PhysicalBot_ws/install/motor_driver/lib/python3.12/site-packages/motor-driver.egg-link (link to .)
+[0.832s] Installing manual_motor_driver script to /home/tusharchillal/PhysicalBot_ws/install/motor_driver/lib/motor_driver
+[0.832s] 
+[0.832s] Installed /home/tusharchillal/PhysicalBot_ws/build/motor_driver
+[0.832s] running symlink_data
+[0.852s] Invoked command in '/home/tusharchillal/PhysicalBot_ws/build/motor_driver' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/tusharchillal/PhysicalBot_ws/build/motor_driver/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tusharchillal/PhysicalBot_ws/install/motor_driver/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/tusharchillal/PhysicalBot_ws/build/motor_driver/build --no-deps symlink_data
