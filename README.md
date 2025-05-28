@@ -11,7 +11,7 @@ In this Project the main aim is to make a base car which is the base for the bui
    > Arduino UNO ,
    > L298N H-Bridge motor driver ,
    > 4x low-powered DC geared motors (2 per side) ,
-   > 12V battery for motor power ,
+   > 2x 3.8V li-ion cells + PowerBank for Pi ,
    > USB cable for Arduino-RPi connection ,
 
    System Flow :
