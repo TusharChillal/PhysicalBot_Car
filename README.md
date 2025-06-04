@@ -1,6 +1,3 @@
-My First ROS Project. 
-In this Project the main aim is to make a base car which is the base for the building up and adding on senesors to make to autonumus.
-
 
 ### Phase 1: Manual Motor Control
 
