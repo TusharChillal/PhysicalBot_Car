@@ -1,0 +1,15 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/tusharchillal/ros2_ws/install/turtle_controller/lib/python3.12/site-packages",
+        "/home/tusharchillal/ros2_ws/install/my_py_pkg/lib/python3.12/site-packages",
+        "/home/tusharchillal/ros2_ws/install/my_robot_interfaces/lib/python3.12/site-packages",
+        "/opt/ros/jazzy/lib/python3.12/site-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/tusharchillal/ros2_ws/install/turtle_controller/lib/python3.12/site-packages",
+        "/home/tusharchillal/ros2_ws/install/my_py_pkg/lib/python3.12/site-packages",
+        "/home/tusharchillal/ros2_ws/install/my_robot_interfaces/lib/python3.12/site-packages",
+        "/opt/ros/jazzy/lib/python3.12/site-packages"
+    ],
+    "python.REPL.enableREPLSmartSend": false
+}
