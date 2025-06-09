@@ -17,6 +17,8 @@
    System Flow :
         [User input thru Joystick/Gamepad] ----> [ROS2 joy_motor_driver.py node] ----> [ESP32 PWM Decoder] ----> [L298N Motor Driver] ----> [Motors]
 
+        In this phase I have created a lauch file becuse we have to run 2 node /joy node and the joy_motor_driver.py node at the same  time 
+
    Phase 2 Outcomes :
   > Verified hardware wiring and motor connections ,
   > Validated serial communication between ROS 2 and ESP32 ,
