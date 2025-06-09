@@ -1,7 +1,7 @@
 
 ### Phase 2: Keyboard Motor Control
 
-   Objective : Establish motor functionality by sending speed and direction from the teleop_twist_keyboard through a ROS 2 node to an Arduino UNO, which drives the motors via the L298N H-bridge motor driver.
+   Objective : Establish motor functionality by sending speed and direction from the teleop_twist_keyboard through a ROS 2 node to an ESP32, which drives the motors via the L298N H-bridge motor driver.
 
    Hardware Used :
    > Raspberry Pi 5 (ROS 2 installed) ,
