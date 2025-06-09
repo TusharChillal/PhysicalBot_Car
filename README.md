@@ -1,4 +1,5 @@
-###Project Overview
+Project Overview
+
       This project documents the step-by-step development of a robust ROS2-powered rover, designed as a modular platform for exploring autonomous navigation and robotic perception. Starting 
       with fundamental motor control and serial communication, the project progressively integrates advanced power management, computational hardware, and eventually, sensor-based autonomy.
 
