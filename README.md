@@ -1,5 +1,5 @@
 
-### Phase 2: Joystick Motor Control
+### Phase 3: Joystick Motor Control
 
    Objective : Establish motor functionality by sending speed and direction from the a Joystrick/gamepad through a ROS 2 node to an ESP32, which drives the motors via the L298N H-bridge motor driver.
 
