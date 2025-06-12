@@ -1,6 +1,10 @@
 
 ### Phase 2: Keyboard Motor Control
 
+
+![IMG_5764](https://github.com/user-attachments/assets/914f4071-b6d4-4bb7-b576-a488bd6615da)
+
+
    Objective : Establish motor functionality by sending speed and direction from the teleop_twist_keyboard through a ROS 2 node to an ESP32, which drives the motors via the L298N H-bridge motor driver.
 
    Hardware Used :
