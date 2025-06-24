@@ -1,6 +1,5 @@
 #include <Arduino.h>
 
-// Motor control pins
 #define IN1 32 
 #define IN2 33 
 #define IN3 26 
@@ -12,12 +11,11 @@
 #define ser1 22
 #define ser2 19
 
-// Servo pins removed – no longer needed
 
 int left_PWM = 0;
 int right_PWM = 0;
-int turn = 90;     // Still extracted from input
-int turn_u = 90;   // Still extracted from input
+int turn = 90;     
+int turn_u = 90;   
 
 void setup() {
   Serial.begin(115200);
@@ -60,8 +58,8 @@ void loop() {
         if (i == 4) {
           left_PWM = values[0];
           right_PWM = values[1];
-          turn = constrain(values[2], 0, 180);     // Still parsed
-          turn_u = constrain(values[3], 0, 180);   // Still parsed
+          turn = constrain(values[2], 0, 180);     
+          turn_u = constrain(values[3], 0, 180);   
 
           Serial.printf("PWM L:%d R:%d | Servo1:%d Servo2:%d\n", left_PWM, right_PWM, turn, turn_u);
 
@@ -107,14 +105,10 @@ void servoController(int turn, int turn_u) {
   turn = constrain(turn, 0, 180);
   turn_u = constrain(turn_u, 0, 180);
 
-  // Convert angle (0–180) to duty (in 16-bit scale for 50Hz PWM)
-  // 0° = 1ms (5% of 20ms), 180° = 2ms (10% of 20ms)
-  // 16-bit resolution: 65536 steps => 1ms = ~3276, 2ms = ~6553
   uint32_t duty1 = map(turn, 0, 180, 3276, 6553);
   uint32_t duty2 = map(turn_u, 0, 180, 3276, 6553);
 
-  // Write duty to channels
-  ledcWrite(0, duty1);  // channel 0 for ser1
-  ledcWrite(1, duty2);  // channel 1 for ser2
+  ledcWrite(0, duty1);  
+  ledcWrite(1, duty2);  
 }
 
