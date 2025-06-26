@@ -1,7 +1,6 @@
 #include <Arduino.h>
 #include <ESP32Servo.h>
 
-// Motor control pins
 #define IN1 32 
 #define IN2 33 
 #define IN3 26 
@@ -9,7 +8,7 @@
 #define ENA 4 
 #define ENB 23 
 
-// Servo pins
+
 #define SERVO1_PIN 18
 #define SERVO2_PIN 19
 
@@ -25,8 +24,8 @@ int currentAngle1 = 90;
 int currentAngle2 = 90;
 
 unsigned long lastServoUpdate = 0;
-const int servoStepDelay = 10; // ms between steps
-const int servoStepSize = 1;   // degrees per step
+const int servoStepDelay = 10; 
+const int servoStepSize = 1;   
 
 void setup() {
   Serial.begin(115200);
@@ -39,7 +38,6 @@ void setup() {
   pinMode(ENA, OUTPUT);
   pinMode(ENB, OUTPUT);
 
-  // Servo init
   ESP32PWM::allocateTimer(0);
   ESP32PWM::allocateTimer(1);
   servo1.setPeriodHertz(50);
@@ -54,7 +52,6 @@ void setup() {
 void loop() {
   static String input = "";
 
-  // Handle incoming serial command
   while (Serial.available()) {
     char c = Serial.read();
     if (c == '\n') {
@@ -94,7 +91,6 @@ void loop() {
     }
   }
 
-  // Smooth servo motion
   updateServoSmooth();
 }
 
