@@ -1,21 +1,32 @@
 #include <Arduino.h>
+#include <ESP32Servo.h>
 
+// Motor control pins
 #define IN1 32 
 #define IN2 33 
 #define IN3 26 
 #define IN4 27 
-
 #define ENA 4 
 #define ENB 23 
 
-#define ser1 22
-#define ser2 19
+// Servo pins
+#define SERVO1_PIN 18
+#define SERVO2_PIN 19
 
+Servo servo1;
+Servo servo2;
 
 int left_PWM = 0;
 int right_PWM = 0;
-int turn = 90;     
-int turn_u = 90;   
+int targetAngle1 = 90;
+int targetAngle2 = 90;
+
+int currentAngle1 = 90;
+int currentAngle2 = 90;
+
+unsigned long lastServoUpdate = 0;
+const int servoStepDelay = 10; // ms between steps
+const int servoStepSize = 1;   // degrees per step
 
 void setup() {
   Serial.begin(115200);
@@ -27,15 +38,23 @@ void setup() {
   pinMode(IN4, OUTPUT);
   pinMode(ENA, OUTPUT);
   pinMode(ENB, OUTPUT);
-  pinMode(ser1, OUTPUT);
 
-  ledcAttachChannel(ser1,600,8,4);
-  ledcAttachChannel(ser2,600,8,5);
+  // Servo init
+  ESP32PWM::allocateTimer(0);
+  ESP32PWM::allocateTimer(1);
+  servo1.setPeriodHertz(50);
+  servo2.setPeriodHertz(50);
+  servo1.attach(SERVO1_PIN, 1000, 2000);
+  servo2.attach(SERVO2_PIN, 1000, 2000);
+
+  servo1.write(currentAngle1);
+  servo2.write(currentAngle2);
 }
 
 void loop() {
   static String input = "";
 
+  // Handle incoming serial command
   while (Serial.available()) {
     char c = Serial.read();
     if (c == '\n') {
@@ -58,14 +77,12 @@ void loop() {
         if (i == 4) {
           left_PWM = values[0];
           right_PWM = values[1];
-          turn = constrain(values[2], 0, 180);     
-          turn_u = constrain(values[3], 0, 180);   
+          targetAngle1 = constrain(values[2], 0, 180);
+          targetAngle2 = constrain(values[3], 0, 180);
 
-          Serial.printf("PWM L:%d R:%d | Servo1:%d Servo2:%d\n", left_PWM, right_PWM, turn, turn_u);
+          Serial.printf("PWM L:%d R:%d | Servo1:%d Servo2:%d\n", left_PWM, right_PWM, targetAngle1, targetAngle2);
 
           motorControl(left_PWM, right_PWM);
-          servoController(turn, turn_u);
-          // Servo control removed
         } else {
           Serial.println("Invalid command format. Expected 4 values.");
         }
@@ -74,6 +91,32 @@ void loop() {
       input = "";
     } else {
       input += c;
+    }
+  }
+
+  // Smooth servo motion
+  updateServoSmooth();
+}
+
+void updateServoSmooth() {
+  unsigned long now = millis();
+  if (now - lastServoUpdate >= servoStepDelay) {
+    bool updated = false;
+
+    if (currentAngle1 != targetAngle1) {
+      currentAngle1 += (currentAngle1 < targetAngle1) ? servoStepSize : -servoStepSize;
+      servo1.write(currentAngle1);
+      updated = true;
+    }
+
+    if (currentAngle2 != targetAngle2) {
+      currentAngle2 += (currentAngle2 < targetAngle2) ? servoStepSize : -servoStepSize;
+      servo2.write(currentAngle2);
+      updated = true;
+    }
+
+    if (updated) {
+      lastServoUpdate = now;
     }
   }
 }
@@ -99,16 +142,3 @@ void motorControl(int leftPWM, int rightPWM) {
     analogWrite(ENB, -rightPWM);
   }
 }
-
-void servoController(int turn, int turn_u) {
-  // Constrain angles to valid range
-  turn = constrain(turn, 0, 180);
-  turn_u = constrain(turn_u, 0, 180);
-
-  uint32_t duty1 = map(turn, 0, 180, 3276, 6553);
-  uint32_t duty2 = map(turn_u, 0, 180, 3276, 6553);
-
-  ledcWrite(0, duty1);  
-  ledcWrite(1, duty2);  
-}
-
